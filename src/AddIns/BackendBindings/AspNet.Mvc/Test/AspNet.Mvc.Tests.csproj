@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
   <PropertyGroup>
     <ProjectGuid>{0B12A079-B2DB-42B9-8A8E-AA5CBC2B3225}</ProjectGuid>
@@ -7,7 +7,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>AspNet.Mvc.Tests</RootNamespace>
     <AssemblyName>AspNet.Mvc.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <OutputPath>..\..\..\..\..\bin\UnitTests\</OutputPath>
     <TargetFrameworkProfile />
@@ -41,8 +41,8 @@
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ICSharpCode.AvalonEdit, Version=6.3.0.90, Culture=neutral, PublicKeyToken=9cc39be672370310">
-      <HintPath>..\..\..\..\..\packages\AvalonEdit.6.3.0.90\lib\net462\ICSharpCode.AvalonEdit.dll</HintPath>
+    <Reference Include="ICSharpCode.AvalonEdit, Version=5.0.3.0, Culture=neutral, PublicKeyToken=9cc39be672370310, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\packages\AvalonEdit.5.0.4\lib\Net40\ICSharpCode.AvalonEdit.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="ICSharpCode.NRefactory">
@@ -50,7 +50,7 @@
     </Reference>
     <Reference Include="Microsoft.Build" />
     <Reference Include="Mono.TextTemplating">
-      <HintPath>..\..\..\..\..\packages\Mono.TextTemplating.2.3.1\lib\net472\Mono.TextTemplating.dll</HintPath>
+      <HintPath>..\..\..\..\..\packages\Mono.TextTemplating.2.0.5\lib\net45\Mono.TextTemplating.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\..\..\..\..\packages\NUnit.2.7.1\lib\nunit.framework.dll</HintPath>

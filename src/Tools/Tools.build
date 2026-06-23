@@ -19,7 +19,8 @@
 	<Target Name="CompileLanguageResources" Inputs="@(LanguageResource)" Outputs="@(LanguageResource->'$(LanguageResourcePath)%(Filename).resources')">
 		<GenerateResource
 		    Sources="@(LanguageResource)"
-		    OutputResources="@(LanguageResource->'$(LanguageResourcePath)%(Filename).resources')"/>
+		    OutputResources="@(LanguageResource->'$(LanguageResourcePath)%(Filename).resources')"
+		    SdkToolsPath="$(SDK40ToolsPath)"/>
 	</Target>
 	
 	<Target Name="Build" DependsOnTargets="CompileLanguageResources">

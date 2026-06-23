@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014 AlphaSierraPapa for the SharpDevelop Team
+// Copyright (c) 2014 AlphaSierraPapa for the SharpDevelop Team
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this
 // software and associated documentation files (the "Software"), to deal in the Software
@@ -301,7 +301,7 @@ namespace ICSharpCode.SharpDevelop.Project
 			}
 			// Load active configuration from preferences
 			CreateDefaultConfigurationsIfMissing();
-			this.ActiveConfiguration = ConfigurationAndPlatform.FromKey(preferences.Get("ActiveConfiguration", "Debug|Any CPU"));
+			this.ActiveConfiguration = ConfigurationAndPlatform.FromKey(preferences.Get("ActiveConfiguration", "Debug|x86"));
 			ValidateConfiguration();
 			// We can't set the startup project property yet; LoadPreferences() is called before
 			// the projects are loaded into the solution.
@@ -449,7 +449,7 @@ namespace ICSharpCode.SharpDevelop.Project
 		}
 		
 		#region IConfigurable implementation
-		ConfigurationAndPlatform activeConfiguration = new ConfigurationAndPlatform("Debug", "AnyCPU");
+		ConfigurationAndPlatform activeConfiguration = new ConfigurationAndPlatform("Debug", "x86");
 		
 		public ConfigurationAndPlatform ActiveConfiguration {
 			get { return activeConfiguration; }
@@ -484,7 +484,7 @@ namespace ICSharpCode.SharpDevelop.Project
 				this.ConfigurationNames.Add("Release");
 			}
 			if (this.PlatformNames.Count == 0) {
-				this.PlatformNames.Add("Any CPU");
+				this.PlatformNames.Add("x86");
 			}
 		}
 		

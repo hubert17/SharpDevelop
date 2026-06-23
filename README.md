@@ -1,4 +1,4 @@
-# #develop (short for SharpDevelop) 
+﻿# #develop (short for SharpDevelop) 
 
 ## Overview
 
@@ -8,7 +8,7 @@
 you would expect in an IDE plus a few more.
 
 The #develop project started on September 11th, 2000. The project was initiated
-by Mike Krüger. In the course of the project, several contributors joined in.
+by Mike KrÃ¼ger. In the course of the project, several contributors joined in.
 
 Looking for the tech notes (Fine Art of Commenting, Coding Style Guide, and more)? These can be found as rtf files in [doc/technotes](doc/technotes)
 
@@ -18,11 +18,11 @@ Looking for the tech notes (Fine Art of Commenting, Coding Style Guide, and more
 ## System Requirements (running #Develop)
 
  - Windows 7 SP1 or higher.
- - [.NET 4.7.2 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net472)
+ - [.NET 4.7.2 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net452)
  
 ## Extended Requirements (building #Develop)
 
- - [.NET 4.7.2 Developer Pack](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net472)
+ - [.NET 4.5.2 Developer Pack](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net452)
  - Build tools:
    - [Microsoft Build Tools 2013](https://www.microsoft.com/en-us/download/details.aspx?id=40760) (For support MSBuild 12.0)
    - [Microsoft Build Tools 2015](https://www.microsoft.com/en-us/download/details.aspx?id=48159) (For support MSBuild 14.0)
@@ -70,7 +70,7 @@ Looking for the tech notes (Fine Art of Commenting, Coding Style Guide, and more
 
 ### Developers
 
-* [Mike Krüger](https://github.com/mkrueger) (Project Founder)
+* [Mike KrÃ¼ger](https://github.com/mkrueger) (Project Founder)
 * [Daniel Grunwald](https://github.com/dgrunwald) (Technical Lead)
 * [Andreas Weizel](https://github.com/Rpinski)
 * [Matt Ward](https://github.com/mrward)
@@ -85,7 +85,7 @@ Looking for the tech notes (Fine Art of Commenting, Coding Style Guide, and more
 
 ### Past Developers (Non-Exhaustive List)
 
-* [Mike Krüger](https://github.com/mkrueger) (Project Founder)
+* [Mike KrÃ¼ger](https://github.com/mkrueger) (Project Founder)
 * Alexandre Semenov
 * Andrea Paatz
 * Christian Hornung
@@ -117,3 +117,4 @@ Looking for the tech notes (Fine Art of Commenting, Coding Style Guide, and more
 * Troy Simpson
 
 ###### Copyright 2014 AlphaSierraPapa for the SharpDevelop team. SharpDevelop is distributed under the MIT license.
+

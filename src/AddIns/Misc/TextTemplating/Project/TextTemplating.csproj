@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
   <PropertyGroup>
     <ProjectGuid>{B5D8C3E6-42EC-4D4B-AD05-3644B32563EF}</ProjectGuid>
@@ -7,7 +7,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>ICSharpCode.TextTemplating</RootNamespace>
     <AssemblyName>TextTemplating</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
     <NoStdLib>False</NoStdLib>
     <WarningLevel>4</WarningLevel>
@@ -43,7 +43,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.TextTemplating">
-      <HintPath>..\..\..\..\..\packages\Mono.TextTemplating.2.3.1\lib\net472\Mono.TextTemplating.dll</HintPath>
+      <HintPath>..\..\..\..\..\packages\Mono.TextTemplating.2.0.5\lib\net45\Mono.TextTemplating.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">

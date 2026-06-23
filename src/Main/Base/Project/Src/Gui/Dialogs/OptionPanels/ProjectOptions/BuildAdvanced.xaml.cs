@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014 AlphaSierraPapa for the SharpDevelop Team
+// Copyright (c) 2014 AlphaSierraPapa for the SharpDevelop Team
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this
 // software and associated documentation files (the "Software"), to deal in the Software
@@ -168,7 +168,7 @@ namespace ICSharpCode.SharpDevelop.Gui.OptionPanels
 		}
 		
 		public ProjectOptionPanel.ProjectProperty<string> PlatformTarget {
-			get {return projectOptions.GetProperty("PlatformTarget","AnyCPU",
+			get {return projectOptions.GetProperty("PlatformTarget","x86",
 			                                       TextBoxEditMode.EditEvaluatedProperty, PropertyStorageLocations.PlatformSpecific ); }
 		}
 		

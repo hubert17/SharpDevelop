@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014 AlphaSierraPapa for the SharpDevelop Team
+// Copyright (c) 2014 AlphaSierraPapa for the SharpDevelop Team
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this
 // software and associated documentation files (the "Software"), to deal in the Software
@@ -223,7 +223,7 @@ namespace ICSharpCode.SharpDevelop.Project
 		#endregion
 		
 		#region Configuration / Platform management
-		ConfigurationAndPlatform activeConfiguration = new ConfigurationAndPlatform("Debug", "AnyCPU");
+		ConfigurationAndPlatform activeConfiguration = new ConfigurationAndPlatform("Debug", "x86");
 		
 		[ReadOnly(true)]
 		[LocalizedProperty("${res:Dialog.Options.CombineOptions.Configurations.ConfigurationColumnHeader}")]
@@ -287,7 +287,7 @@ namespace ICSharpCode.SharpDevelop.Project
 		
 		public virtual IConfigurationOrPlatformNameCollection PlatformNames {
 			get {
-				return new ReadOnlyConfigurationOrPlatformNameCollection(new[] { "AnyCPU" });
+				return new ReadOnlyConfigurationOrPlatformNameCollection(new[] { "x86" });
 			}
 		}
 		

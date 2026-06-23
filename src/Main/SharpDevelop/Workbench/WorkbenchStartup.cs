@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014 AlphaSierraPapa for the SharpDevelop Team
+// Copyright (c) 2014 AlphaSierraPapa for the SharpDevelop Team
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this
 // software and associated documentation files (the "Software"), to deal in the Software
@@ -191,7 +191,7 @@ namespace ICSharpCode.SharpDevelop.Workbench
 <Project DefaultTargets=""Build"" xmlns=""http://schemas.microsoft.com/developer/msbuild/2003"" ToolsVersion=""4.0"">
   <PropertyGroup>
     <Configuration>Debug</Configuration>
-    <Platform>AnyCPU</Platform>
+    <Platform>x86</Platform>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include=""System"" />

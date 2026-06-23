@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014 AlphaSierraPapa for the SharpDevelop Team
+// Copyright (c) 2014 AlphaSierraPapa for the SharpDevelop Team
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this
 // software and associated documentation files (the "Software"), to deal in the Software
@@ -44,7 +44,7 @@ namespace ICSharpCode.SharpDevelop.Project
 			if (solutionConfig.Configuration != null && solutionConfig.Platform != null)
 				this.ActiveProjectConfiguration = this.ConfigurationMapping.GetProjectConfiguration(solution.ActiveConfiguration);
 			else
-				this.ActiveProjectConfiguration = new ConfigurationAndPlatform("Debug", "AnyCPU");
+				this.ActiveProjectConfiguration = new ConfigurationAndPlatform("Debug", "x86");
 			this.InitializeTypeSystem = true;
 		}
 		

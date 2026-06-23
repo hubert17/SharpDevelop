@@ -135,7 +135,7 @@ namespace ICSharpCode.SharpDevelop.Startup
 		{
 			// Safety check: our setup already checks that .NET 4 is installed, but we manually check the .NET version in case SharpDevelop is
 			// used on another machine than it was installed on (e.g. "SharpDevelop on USB stick")
-			if (!DotnetDetection.IsDotnet45Installed()) {
+			if (!DotnetDetection.IsDotnet452Installed()) {
 				MessageBox.Show("This version of SharpDevelop requires .NET 4.5. You are using: " + Environment.Version, "SharpDevelop");
 				return false;
 			}
@@ -247,3 +247,4 @@ namespace ICSharpCode.SharpDevelop.Startup
 		}
 	}
 }
+

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014 AlphaSierraPapa for the SharpDevelop Team
+// Copyright (c) 2014 AlphaSierraPapa for the SharpDevelop Team
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this
 // software and associated documentation files (the "Software"), to deal in the Software
@@ -155,6 +155,7 @@ namespace ICSharpCode.SharpDevelop.Workbench
 			SD.ResourceService.LanguageChanged += OnLanguageChanged;
 			
 			SD.StatusBar.SetMessage("${res:MainWindow.StatusBar.ReadyMessage}");
+			Title = "SharpDevelop (Fork by Gabs)";
 		}
 		
 		void ExecuteCommand(ICommand command, object caller)
@@ -208,10 +209,11 @@ namespace ICSharpCode.SharpDevelop.Workbench
 		
 		void SetProjectTitle(object sender, Project.ProjectEventArgs e)
 		{
+			string suffix = "SharpDevelop (Fork by Gabs)";
 			if (e.Project != null) {
-				Title = e.Project.Name + " - " + ResourceService.GetString("MainWindow.DialogName");
+				Title = e.Project.Name + " - " + suffix;
 			} else {
-				Title = ResourceService.GetString("MainWindow.DialogName");
+				Title = suffix;
 			}
 		}
 		

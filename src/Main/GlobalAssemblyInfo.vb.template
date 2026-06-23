@@ -1,4 +1,4 @@
-﻿' Copyright (c) 2014 AlphaSierraPapa for the SharpDevelop Team
+' Copyright (c) 2014 AlphaSierraPapa for the SharpDevelop Team
 ' 
 ' Permission is hereby granted, free of charge, to any person obtaining a copy of this
 ' software and associated documentation files (the "Software"), to deal in the Software
@@ -31,7 +31,7 @@ Imports System.Reflection
 <Assembly: System.Runtime.InteropServices.ComVisible(False)>
 <Assembly: AssemblyCompany("ic#code")>
 <Assembly: AssemblyProduct("SharpDevelop")>
-<Assembly: AssemblyCopyright("2000-$INSERTYEAR$ AlphaSierraPapa for the SharpDevelop Team")>
+<Assembly: AssemblyCopyright("2000-$INSERTYEAR$ AlphaSierraPapa. Fork by Gabs.")>
 <Assembly: AssemblyVersion(RevisionClass.Major + "." + RevisionClass.Minor + "." + RevisionClass.Build + "." + RevisionClass.Revision)>
 <Assembly: AssemblyInformationalVersion(RevisionClass.FullVersion + "-$INSERTSHORTCOMMITHASH$")>
 <Assembly: NeutralResourcesLanguage("en-US")>
