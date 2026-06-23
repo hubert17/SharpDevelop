@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014 AlphaSierraPapa for the SharpDevelop Team
+// Copyright (c) 2014 AlphaSierraPapa for the SharpDevelop Team
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this
 // software and associated documentation files (the "Software"), to deal in the Software
@@ -107,6 +107,13 @@ namespace ICSharpCode.PackageManagement.Scripting
 				InitialSessionState initialSessionState = CreateInitialSessionState();
 				runspace = RunspaceFactory.CreateRunspace(this, initialSessionState);
 				runspace.Open();
+				try {
+					using (Pipeline pipeline = CreatePipeline("[Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12")) {
+						pipeline.Invoke();
+					}
+				} catch (Exception ex) {
+					scriptingConsole.WriteLine(ex.Message, ScriptingStyle.Error);
+				}
 			}
 		}
 		
