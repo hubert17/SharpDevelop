@@ -22,6 +22,7 @@
 	
 		<PropertyGroup>
 			<OutputType>Library</OutputType>
+			<LangVersion>7.3</LangVersion>
 			<AppDesignerFolder>Properties</AppDesignerFolder>
 			<TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
 			<TargetFrameworkProfile>Profile1</TargetFrameworkProfile>
