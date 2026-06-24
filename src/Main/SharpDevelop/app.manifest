@@ -26,6 +26,8 @@
 	
 	<compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
 		<application>
+			<!-- Windows 10 / Windows 11 -->
+			<supportedOS Id="{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}"/>
 			<!-- Windows 8.1 -->
 			<supportedOS Id="{1f676c76-80e1-4239-95bb-83d0f6d0da78}"/>
 			<!-- Windows 8 -->
@@ -38,8 +40,10 @@
 	</compatibility>
 	
 	<application xmlns="urn:schemas-microsoft-com:asm.v3" >
-		<windowsSettings xmlns:ws="http://schemas.microsoft.com/SMI/2005/WindowsSettings">
-			<ws:dpiAware>true</ws:dpiAware>
+		<windowsSettings xmlns:ws="http://schemas.microsoft.com/SMI/2005/WindowsSettings"
+		                 xmlns:ws2="http://schemas.microsoft.com/SMI/2016/WindowsSettings">
+			<ws:dpiAware>true/PM</ws:dpiAware>
+			<ws2:dpiAwareness>PerMonitorV2, PerMonitor</ws2:dpiAwareness>
 		</windowsSettings>
 	</application>
 </assembly>
