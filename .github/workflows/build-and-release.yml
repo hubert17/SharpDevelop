@@ -31,6 +31,9 @@ jobs:
       - name: Restore NuGet Packages
         run: nuget restore SharpDevelop.sln
 
+      - name: Install .NET 4.5.2 Developer Pack
+        run: choco install netfx-4.5.2-devpack -y
+
       - name: Build SharpDevelop IDE (Release)
         run: msbuild SharpDevelop.sln /p:Configuration=Release /p:Platform="Any CPU" -m
 
