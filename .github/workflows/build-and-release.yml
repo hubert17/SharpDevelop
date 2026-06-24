@@ -1,0 +1,86 @@
+name: Build and Release
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build IDE and Installer
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v2
+
+      - name: Restore NuGet Packages
+        run: nuget restore SharpDevelop.sln
+
+      - name: Build SharpDevelop IDE (Release)
+        run: msbuild SharpDevelop.sln /p:Configuration=Release /p:Platform="Any CPU" -m
+
+      - name: Run WiX Configuration Cleaner
+        shell: powershell
+        run: |
+          cd src/Setup
+          .\CleanWixProjects.ps1
+
+      - name: Build Setup Installer (Release)
+        run: |
+          msbuild src/Setup/SharpDevelop.Setup.sln /p:Configuration=Release /p:SharpDevelopBinPath="${{ github.workspace }}\bin"
+
+      - name: Verify Installer Output
+        shell: powershell
+        run: |
+          $msiPath = "src/Setup/bin/SharpDevelop.msi"
+          if (Test-Path $msiPath) {
+              $size = (Get-Item $msiPath).Length / 1MB
+              Write-Host "Successfully generated SharpDevelop.msi ($($size.ToString('F2')) MB)"
+          } else {
+              Write-Error "SharpDevelop.msi was not found!"
+              exit 1
+          }
+
+      - name: Upload Installer Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: SharpDevelop-Installer
+          path: src/Setup/bin/SharpDevelop.msi
+
+      - name: Create Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: src/Setup/bin/SharpDevelop.msi
+          draft: false
+          prerelease: false
+          name: Release ${{ github.ref_name }}
+          body: |
+            ## SharpDevelop (Fork by Gabs) - Release ${{ github.ref_name }}
+            
+            This is an automated release for the customized legacy fork of SharpDevelop IDE.
+            
+            ### Highlights of this release:
+            - **Downgrade to .NET Framework 4.5.2** for maximum legacy environment compatibility.
+            - **Default 32-bit x86 architecture** for new project templates and build outputs.
+            - **NuGet TLS 1.2 compatibility** resolved for out-of-the-box package restores.
+            - **Custom title bar branding** (`SharpDevelop (Fork by Gabs)`).
+            - **Exclusion of non-essential AddIns** (Git, SVN, Profiler, F#, C++, Wix, etc.) keeping the installation lightweight.
+            - **Fixed Assembly Version** (`5.2.0.5290`) to prevent startup popup collisions.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
