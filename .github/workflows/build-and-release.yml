@@ -34,6 +34,9 @@ jobs:
       - name: Install .NET 4.5.2 Developer Pack
         run: choco install netfx-4.5.2-devpack -y
 
+      - name: Initialize Assembly Info
+        run: msbuild src/Tools/Tools.build /t:PrepareRelease
+
       - name: Build SharpDevelop IDE (Release)
         run: msbuild SharpDevelop.sln /p:Configuration=Release /p:Platform="Any CPU" -m
 
