@@ -31,8 +31,40 @@ jobs:
       - name: Restore NuGet Packages
         run: nuget restore SharpDevelop.sln
 
-      - name: Install .NET 4.5.2 Developer Pack
-        run: choco install netfx-4.5.2-devpack -y
+      - name: Install Legacy .NET Reference Assemblies
+        shell: pwsh
+        run: |
+          $frameworks = @(
+            @{ name = "v4.5.2"; package = "Microsoft.NETFramework.ReferenceAssemblies.net452"; version = "1.0.3" },
+            @{ name = "v4.5"; package = "Microsoft.NETFramework.ReferenceAssemblies.net45"; version = "1.0.3" },
+            @{ name = "v4.0"; package = "Microsoft.NETFramework.ReferenceAssemblies.net40"; version = "1.0.3" },
+            @{ name = "v3.5"; package = "Microsoft.NETFramework.ReferenceAssemblies.net35"; version = "1.0.3" }
+          )
+          
+          foreach ($fw in $frameworks) {
+            $targetPath = "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\$($fw.name)"
+            if (!(Test-Path $targetPath)) {
+                Write-Host "Installing reference assemblies for $($fw.name)..."
+                New-Item -ItemType Directory -Force -Path $targetPath | Out-Null
+                $zipFile = "$env:TEMP\$($fw.package).zip"
+                $extractDir = "$env:TEMP\$($fw.package)"
+                
+                # Download package
+                Invoke-WebRequest -Uri "https://www.nuget.org/api/v2/package/$($fw.package)/$($fw.version)" -OutFile $zipFile
+                
+                # Extract package
+                Expand-Archive -Path $zipFile -DestinationPath $extractDir -Force
+                
+                # Copy reference assemblies
+                Copy-Item -Path "$extractDir\build\.NETFramework\$($fw.name)\*" -Destination $targetPath -Recurse -Force
+                
+                # Clean up
+                Remove-Item -Path $zipFile -Force
+                Remove-Item -Path $extractDir -Recurse -Force
+            } else {
+                Write-Host "Reference assemblies for $($fw.name) already exist."
+            }
+          }
 
       - name: Initialize Assembly Info
         run: msbuild src/Tools/Tools.build /t:PrepareRelease
