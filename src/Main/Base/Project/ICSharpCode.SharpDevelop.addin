@@ -1901,11 +1901,7 @@
 			<!--			</Condition> -->
 		</MenuItem>
 		
-		<Condition name="CompareProjectProperty" property="OutputType" equals="AlwaysExcludeThisMenu" action="Exclude">
-			<MenuItem id="Analysis" label="${res:XML.MainMenu.Analysis}" type="Menu">
-				<MenuItem id="Separator1" type="Separator" />
-			</MenuItem>
-		</Condition>
+
 		
 		<MenuItem id = "Tools" label = "${res:XML.MainMenu.ToolMenu}" type="Menu">
 			<MenuItem id = "ToolBuilder" type="Builder" class = "ICSharpCode.SharpDevelop.Commands.ToolMenuBuilder" />
