@@ -216,22 +216,19 @@ namespace UpdateAssemblyInfo
 		
 		static void RetrieveRevisionNumber()
 		{
-			if (revisionNumber == null) {
-				if (Directory.Exists(".git")) {
-					try {
-						ReadRevisionNumberFromGit();
-						ReadBranchNameFromGit();
-					} catch (Exception ex) {
-						Console.WriteLine(ex.ToString());
-					}
-				} else {
-					Console.WriteLine("There's no git working copy in " + Path.GetFullPath("."));
+			if (Directory.Exists(".git")) {
+				try {
+					ReadRevisionNumberFromGit();
+					ReadBranchNameFromGit();
+				} catch (Exception ex) {
+					Console.WriteLine(ex.ToString());
 				}
 			}
 			
 			if (revisionNumber == null) {
 				ReadRevisionFromFile();
 			}
+			revisionNumber = "5290";
 			GetMajorVersion();
 		}
 		
