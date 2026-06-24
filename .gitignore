@@ -30,3 +30,8 @@ bin/
 *.DotSettings.user
 *.suo
 .DS_Store
+
+# AI Agent custom configurations
+.agents/
+.antigravityignore
+.geminiignore
