@@ -43,7 +43,7 @@ jobs:
           
           foreach ($fw in $frameworks) {
             $targetPath = "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\$($fw.name)"
-            if (!(Test-Path $targetPath)) {
+            if (!(Test-Path "$targetPath\System.dll")) {
                 Write-Host "Installing reference assemblies for $($fw.name)..."
                 New-Item -ItemType Directory -Force -Path $targetPath | Out-Null
                 $zipFile = "$env:TEMP\$($fw.package).zip"
