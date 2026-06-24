@@ -1,24 +1,35 @@
-﻿# #develop (short for SharpDevelop) 
+# #develop (short for SharpDevelop) - Fork by Gabs
 
 ## Overview
 
- #develop is a free Integrated Development Environment
-(IDE) for C#, VB.NET, Boo, IronPython, IronRuby and F# projects on Microsoft's
-.NET platform. It is written (almost) entirely in C#, and comes with features 
-you would expect in an IDE plus a few more.
+**SharpDevelop (Fork by Gabs)** is a customized legacy fork of the #develop IDE. This fork focuses on restoring maximum compatibility with nostalgic and legacy development environments, streamlining templates, resolving HTTPS/TLS connectivity issues with older package repositories, and locking the project framework targets.
 
-The #develop project started on September 11th, 2000. The project was initiated
-by Mike KrÃ¼ger. In the course of the project, several contributors joined in.
+### Fork Highlights & Customizations
+
+1. **Target Framework & Architecture Defaults**
+   - **Target Framework Downgrade**: All core projects and active assemblies are downgraded to **.NET Framework 4.5.2** to fit legacy environment constraints.
+   - **32-Bit (x86) Default Target**: Configured the build targets and default project templates to target **32-bit x86** architecture out-of-the-box for maximum execution compatibility.
+
+2. **NuGet TLS Connection & Security Fixes**
+   - **TLS 1.2 Enablement**: Standardized connections to support TLS 1.2. The PowerShell script environments, package restore processes, and HTTP registry configurations are preset to enforce `StrongCrypto` and TLS 1.2 protocols. This resolves the NuGet connection errors (*"The underlying connection was closed: An unexpected error occurred on a send"*).
+
+3. **Streamlined Templates & AddIns**
+   - **C# Only Focus**: Excluded non-essential project template trees like Silverlight, WCF, WPF, and VB.NET templates. 
+   - **Cleaned AddIns**: Excluded resource-intensive and modern VCS add-ins (Git, SVN, Profilers, F# integration, C++, Wix, etc.) in the solution to keep the IDE extremely lightweight.
+
+4. **IDE Branding & Version Consistency**
+   - **Title Bar Customization**: Branded the main window title to show `"SharpDevelop (Fork by Gabs)"`.
+   - **Assembly Version Lock**: Locked the build assembly version at `5.2.0.5290` to avoid startup popup dependency conflicts after new git commits.
 
 Looking for the tech notes (Fine Art of Commenting, Coding Style Guide, and more)? These can be found as rtf files in [doc/technotes](doc/technotes)
 
 ## How To Compile
- #Develop can be compiled using the supplied .bat files, or in #Develop itself.
+ #Develop can be compiled using the supplied `.bat` files (`debugbuild.bat` or `releasebuild.bat`), or in #Develop itself.
 
 ## System Requirements (running #Develop)
 
  - Windows 7 SP1 or higher.
- - [.NET 4.7.2 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net452)
+ - [.NET 4.5.2 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net452)
  
 ## Extended Requirements (building #Develop)
 
