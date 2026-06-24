@@ -1,4 +1,4 @@
-﻿<AddIn name               = "Microsoft Help System v1.0"
+<AddIn name               = "Microsoft Help System v1.0"
        author             = "Mathias Simmack"
        url                = ""
        description        = "Help Integration for SharpDevelop"
@@ -47,21 +47,4 @@
 		     defaultPosition   = "Right, Hidden" />	
 	</Path>
 
-	<Path name                 = "/SharpDevelop/Workbench/MainMenu/Help">
-		<MenuItem id           = "Help3DisplayContentCommand"
-		          class        = "MSHelpSystem.Commands.DisplayContent"
-		          label        = "${res:AddIns.HelpViewer.DisplayContentsCommand}"
-		          shortcut     = "Control|Alt|F1"
-		          insertbefore = "Separator1" />
-		<MenuItem id           = "Help3DisplaySearchCommand"
-		          class        = "MSHelpSystem.Commands.DisplaySearch"
-		          label        = "${res:AddIns.HelpViewer.DisplaySearchCommand}"
-		          shortcut     = ""
-		          insertbefore = "Separator1" />
-		<MenuItem id           = "LaunchHelpLibraryManager"
-		          class        = "MSHelpSystem.Commands.LaunchHelpLibraryManager"
-		          label        = "${res:AddIns.HelpViewer.LaunchHelpLibraryManagerCommand}"
-		          shortcut     = ""
-		          insertbefore = "Separator1" />
-	</Path>
 </AddIn>
