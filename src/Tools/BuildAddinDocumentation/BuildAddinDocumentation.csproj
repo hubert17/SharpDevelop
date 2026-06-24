@@ -9,6 +9,7 @@
     <ProjectGuid>{211887B2-E9E4-45A4-BE16-6CEA4A7E00F2}</ProjectGuid>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <LangVersion>7.3</LangVersion>
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
     <NoStdLib>False</NoStdLib>
     <WarningLevel>4</WarningLevel>

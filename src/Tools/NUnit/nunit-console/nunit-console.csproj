@@ -16,6 +16,7 @@
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <LangVersion>7.3</LangVersion>
     <ApplicationIcon>App.ico</ApplicationIcon>
     <SourceAnalysisOverrideSettingsFile>C:\Users\matt\AppData\Roaming\ICSharpCode/SharpDevelop3.0\Settings.SourceAnalysis</SourceAnalysisOverrideSettingsFile>
   </PropertyGroup>

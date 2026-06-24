@@ -16,6 +16,7 @@
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
     <RunCodeAnalysis>False</RunCodeAnalysis>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <LangVersion>7.3</LangVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
   </PropertyGroup>

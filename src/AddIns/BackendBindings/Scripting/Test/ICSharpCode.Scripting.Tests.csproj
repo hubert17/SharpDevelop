@@ -8,6 +8,7 @@
     <RootNamespace>ICSharpCode.Scripting.Tests</RootNamespace>
     <AssemblyName>ICSharpCode.Scripting.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <LangVersion>7.3</LangVersion>
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
     <NoStdLib>False</NoStdLib>
     <WarningLevel>4</WarningLevel>

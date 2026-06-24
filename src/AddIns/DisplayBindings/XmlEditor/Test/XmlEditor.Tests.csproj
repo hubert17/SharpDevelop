@@ -21,6 +21,7 @@
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
     <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <LangVersion>7.3</LangVersion>
     <DebugSymbols>true</DebugSymbols>
     <TargetFrameworkProfile />
   </PropertyGroup>
