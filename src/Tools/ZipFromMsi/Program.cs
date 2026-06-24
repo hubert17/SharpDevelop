@@ -52,60 +52,96 @@ namespace ZipFromMsi
                     }
                 }
 
-                // Create and add the shortcut to the zip
-                string tempLnkPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SharpDevelop.lnk");
+                // Compile and add the launcher to the zip
+                string tempExePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SharpDevelopLauncher.exe");
                 try
                 {
-                    string rootBinPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\..\\..\\bin"));
-                    string targetPath = Path.Combine(rootBinPath, "SharpDevelop.exe");
-                    string workingDirectory = rootBinPath;
-                    string iconLocation = targetPath + ",0";
+                    string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+                    string iconPath = Path.GetFullPath(Path.Combine(baseDir, "..\\..\\..\\..\\Main\\SharpDevelop\\Resources\\SharpDevelop.ico"));
 
-                    CreateShortcut(tempLnkPath, targetPath, workingDirectory, iconLocation);
+                    CompileLauncher(tempExePath, iconPath);
 
                     using (ZipArchive theZip = ZipFile.Open(zipFileName, ZipArchiveMode.Update))
                     {
-                        theZip.CreateEntryFromFile(tempLnkPath, ZipRootDirectory + "/SharpDevelop.lnk", CompressionLevel.Optimal);
+                        theZip.CreateEntryFromFile(tempExePath, ZipRootDirectory + "/SharpDevelop.exe", CompressionLevel.Optimal);
                     }
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Warning: Failed to create or add shortcut to zip: " + ex.Message);
+                    Console.WriteLine("Warning: Failed to compile or add launcher to zip: " + ex.Message);
                 }
                 finally
                 {
-                    if (File.Exists(tempLnkPath))
+                    if (File.Exists(tempExePath))
                     {
-                        File.Delete(tempLnkPath);
+                        File.Delete(tempExePath);
                     }
                 }
             }
         }
 
-        static void CreateShortcut(string shortcutPath, string targetPath, string workingDirectory, string iconLocation)
+        static void CompileLauncher(string outputPath, string iconPath)
         {
-            Type shellType = Type.GetTypeFromProgID("WScript.Shell");
-            object shell = Activator.CreateInstance(shellType);
-            object shortcut = shellType.InvokeMember("CreateShortcut", 
-                System.Reflection.BindingFlags.InvokeMethod, 
-                null, shell, new object[] { shortcutPath });
+            var codeProvider = new Microsoft.CSharp.CSharpCodeProvider();
+            var parameters = new System.CodeDom.Compiler.CompilerParameters();
             
-            Type shortcutType = shortcut.GetType();
-            shortcutType.InvokeMember("TargetPath", 
-                System.Reflection.BindingFlags.SetProperty, 
-                null, shortcut, new object[] { targetPath });
+            parameters.GenerateExecutable = true;
+            parameters.OutputAssembly = outputPath;
+            parameters.CompilerOptions = "/target:winexe";
+            if (!string.IsNullOrEmpty(iconPath) && File.Exists(iconPath))
+            {
+                parameters.CompilerOptions += " /win32icon:\"" + iconPath + "\"";
+            }
             
-            shortcutType.InvokeMember("WorkingDirectory", 
-                System.Reflection.BindingFlags.SetProperty, 
-                null, shortcut, new object[] { workingDirectory });
+            parameters.ReferencedAssemblies.Add("System.dll");
+            parameters.ReferencedAssemblies.Add("System.Windows.Forms.dll");
             
-            shortcutType.InvokeMember("IconLocation", 
-                System.Reflection.BindingFlags.SetProperty, 
-                null, shortcut, new object[] { iconLocation });
+            string sourceCode = @"
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Windows.Forms;
+
+class Program
+{
+    static void Main()
+    {
+        string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+        string binPath = Path.Combine(baseDir, ""bin"");
+        string exePath = Path.Combine(binPath, ""SharpDevelop.exe"");
+        
+        if (!File.Exists(exePath))
+        {
+            MessageBox.Show(""Could not find bin\\SharpDevelop.exe in the current directory."", ""SharpDevelop Portable"", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
+        
+        ProcessStartInfo startInfo = new ProcessStartInfo();
+        startInfo.FileName = exePath;
+        startInfo.WorkingDirectory = binPath;
+        
+        try
+        {
+            Process.Start(startInfo);
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(""Failed to start SharpDevelop: "" + ex.Message, ""SharpDevelop Portable"", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+    }
+}
+";
             
-            shortcutType.InvokeMember("Save", 
-                System.Reflection.BindingFlags.InvokeMethod, 
-                null, shortcut, null);
+            var results = codeProvider.CompileAssemblyFromSource(parameters, sourceCode);
+            if (results.Errors.Count > 0)
+            {
+                var sb = new System.Text.StringBuilder();
+                foreach (System.CodeDom.Compiler.CompilerError error in results.Errors)
+                {
+                    sb.AppendLine(error.ErrorText);
+                }
+                throw new Exception("Compiler errors:\n" + sb.ToString());
+            }
         }
 
         static void ProcessFolder(XElement folder, ZipArchive theZip, string folderRelativePath)
