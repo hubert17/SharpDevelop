@@ -1,7 +1,7 @@
-﻿<SyntaxDefinition
+<SyntaxDefinition
 	xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008"
 	name="C#/Razor"
-	extensions=".cshtml">
+	extensions=".cshtml;.razor">
 	
 	<Color name="CommentBlockStartEndTags" foreground="Black" background="Yellow" />
 	<Color name="CodeBlockStartEndTags" foreground="Black" background="Yellow" />

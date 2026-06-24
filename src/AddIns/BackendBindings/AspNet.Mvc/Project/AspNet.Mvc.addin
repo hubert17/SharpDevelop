@@ -1,4 +1,4 @@
-﻿<AddIn
+<AddIn
 	name="ASP.NET MVC Binding"
 	author="Matt Ward"
 	copyright="prj:///doc/copyright.txt"
@@ -52,7 +52,7 @@
 	<Path name="/SharpDevelop/ViewContent/AvalonEdit/SyntaxModes">
 		<SyntaxMode
 			id="CSharp.Razor.SyntaxMode"
-			extensions=".cshtml"
+			extensions=".cshtml;.razor"
 			name="C#/Razor"
 			resource="ICSharpCode.AspNet.Mvc.Resources.CSharpRazor.xshd"/>
 		<SyntaxMode
@@ -65,7 +65,7 @@
 	<Path name="/Workspace/Icons">
 		<Icon
 			id="CSharp.Razor.File"
-			extensions=".cshtml"
+			extensions=".cshtml;.razor"
 			resource="C#.File.MvcRazorFile.Small"/>
 		<Icon
 			id="VisualBasic.Razor.File"
@@ -77,8 +77,8 @@
 		<FileFilter
 			id="CSharp.Razor"
 			insertbefore="AllFiles"
-			name="C# Razor Files (*.cshtml)"
-			extensions="*.cshtml"/>
+			name="C# Razor Files (*.cshtml;*.razor)"
+			extensions="*.cshtml;*.razor"/>
 		<FileFilter
 			id="VisualBasic.Razor"
 			insertbefore="AllFiles"
@@ -99,7 +99,7 @@
 		<TextEditorExtension
 			id="CSharp.Razor"
 			class="ICSharpCode.AspNet.Mvc.Folding.CSharpRazorTextEditorExtension"
-			extensions=".cshtml" />
+			extensions=".cshtml;.razor" />
 		<TextEditorExtension
 			id="VisualBasic.Razor"
 			class="ICSharpCode.AspNet.Mvc.Folding.VisualBasicRazorTextEditorExtension"
@@ -131,13 +131,13 @@
 	</Path>
 	
 	<Path name = "/SharpDevelop/ViewContent/TextEditor/CodeCompletion">
-		<CodeCompletionBinding id = "RazorCSharp" extensions = ".cshtml" class = "ICSharpCode.AspNet.Mvc.Completion.RazorCSharpCompletionBinding"/>
+		<CodeCompletionBinding id = "RazorCSharp" extensions = ".cshtml;.razor" class = "ICSharpCode.AspNet.Mvc.Completion.RazorCSharpCompletionBinding"/>
 	</Path>
 
 	<Path name = "/Workspace/Parser">
 		<Parser
 			id = "RazorCSharp"
-			supportedextensions = ".cshtml"
+			supportedextensions = ".cshtml;.razor"
 			projectfileextension = ".csproj"
 			class = "ICSharpCode.AspNet.Mvc.Completion.RazorCSharpParser"/>
 	</Path>
