@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
@@ -51,7 +51,61 @@ namespace ZipFromMsi
                         ProcessFolder(folder, theZip, ZipRootDirectory);
                     }
                 }
+
+                // Create and add the shortcut to the zip
+                string tempLnkPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SharpDevelop.lnk");
+                try
+                {
+                    string rootBinPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\..\\..\\bin"));
+                    string targetPath = Path.Combine(rootBinPath, "SharpDevelop.exe");
+                    string workingDirectory = rootBinPath;
+                    string iconLocation = targetPath + ",0";
+
+                    CreateShortcut(tempLnkPath, targetPath, workingDirectory, iconLocation);
+
+                    using (ZipArchive theZip = ZipFile.Open(zipFileName, ZipArchiveMode.Update))
+                    {
+                        theZip.CreateEntryFromFile(tempLnkPath, ZipRootDirectory + "/SharpDevelop.lnk", CompressionLevel.Optimal);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Warning: Failed to create or add shortcut to zip: " + ex.Message);
+                }
+                finally
+                {
+                    if (File.Exists(tempLnkPath))
+                    {
+                        File.Delete(tempLnkPath);
+                    }
+                }
             }
+        }
+
+        static void CreateShortcut(string shortcutPath, string targetPath, string workingDirectory, string iconLocation)
+        {
+            Type shellType = Type.GetTypeFromProgID("WScript.Shell");
+            object shell = Activator.CreateInstance(shellType);
+            object shortcut = shellType.InvokeMember("CreateShortcut", 
+                System.Reflection.BindingFlags.InvokeMethod, 
+                null, shell, new object[] { shortcutPath });
+            
+            Type shortcutType = shortcut.GetType();
+            shortcutType.InvokeMember("TargetPath", 
+                System.Reflection.BindingFlags.SetProperty, 
+                null, shortcut, new object[] { targetPath });
+            
+            shortcutType.InvokeMember("WorkingDirectory", 
+                System.Reflection.BindingFlags.SetProperty, 
+                null, shortcut, new object[] { workingDirectory });
+            
+            shortcutType.InvokeMember("IconLocation", 
+                System.Reflection.BindingFlags.SetProperty, 
+                null, shortcut, new object[] { iconLocation });
+            
+            shortcutType.InvokeMember("Save", 
+                System.Reflection.BindingFlags.InvokeMethod, 
+                null, shortcut, null);
         }
 
         static void ProcessFolder(XElement folder, ZipArchive theZip, string folderRelativePath)
