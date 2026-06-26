@@ -179,6 +179,7 @@
         <ComponentRef Id="StringResourceFiles" />
         <ComponentRef Id="SchemaFiles" />
         <ComponentRef Id="CSharpFileTemplates" />
+        <ComponentRef Id="CSharpProjectTemplates" />
         <ComponentRef Id="CSharpRecentFilesCollectionTemplate" />
         <ComponentRef Id="CSharpRecentFilesCollectionTemplateRecentFileElementClass" />
         <ComponentRef Id="CSharpRecentFilesCollectionTemplateRecentFilesCollectionClass" />
