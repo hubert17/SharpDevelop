@@ -8,7 +8,6 @@
     <RootNamespace>ICSharpCode.ILSpyAddIn</RootNamespace>
     <AssemblyName>ILSpyAddIn</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <LangVersion>7.3</LangVersion>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <OutputPath>..\..\..\..\AddIns\DisplayBindings\Decompiler\</OutputPath>
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>

@@ -8,7 +8,6 @@
     <RootNamespace>ICSharpCode.AvalonEdit.AddIn</RootNamespace>
     <AssemblyName>ICSharpCode.AvalonEdit.AddIn</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <LangVersion>7.3</LangVersion>
     <SourceAnalysisOverrideSettingsFile>C:\Users\Daniel\AppData\Roaming\ICSharpCode/SharpDevelop3.0\Settings.SourceAnalysis</SourceAnalysisOverrideSettingsFile>
     <OutputPath>..\..\..\..\AddIns\DisplayBindings\AvalonEdit\</OutputPath>
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>

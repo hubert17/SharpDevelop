@@ -8,7 +8,6 @@
     <RootNamespace>ICSharpCode.SharpDevelop.BuildWorker</RootNamespace>
     <AssemblyName>ICSharpCode.SharpDevelop.BuildWorker140</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <LangVersion>7.3</LangVersion>
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
     <NoStdLib>False</NoStdLib>
     <WarningLevel>4</WarningLevel>
