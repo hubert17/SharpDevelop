@@ -52,25 +52,23 @@ namespace ZipFromMsi
                     }
                 }
 
-                // Add the pre-compiled launcher to the zip
-                string precompiledLauncherPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../SharpDevelopLauncher.exe"));
+                // Add the batch file launcher to the zip to avoid antivirus false positives
                 try
                 {
-                    if (File.Exists(precompiledLauncherPath))
+                    using (ZipArchive theZip = ZipFile.Open(zipFileName, ZipArchiveMode.Update))
                     {
-                        using (ZipArchive theZip = ZipFile.Open(zipFileName, ZipArchiveMode.Update))
+                        var entry = theZip.CreateEntry(ZipRootDirectory + "/SharpDevelop.bat", CompressionLevel.Optimal);
+                        using (var writer = new StreamWriter(entry.Open()))
                         {
-                            theZip.CreateEntryFromFile(precompiledLauncherPath, ZipRootDirectory + "/SharpDevelop.exe", CompressionLevel.Optimal);
+                            writer.WriteLine("@echo off");
+                            writer.WriteLine("start \"\" \"%~dp0bin\\SharpDevelop.exe\" %*");
                         }
                     }
-                    else
-                    {
-                        Console.WriteLine("Warning: Pre-compiled launcher not found at: " + precompiledLauncherPath);
-                    }
+                    Console.WriteLine("Successfully added SharpDevelop.bat launcher to zip.");
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Warning: Failed to add pre-compiled launcher to zip: " + ex.Message);
+                    Console.WriteLine("Warning: Failed to add batch file launcher to zip: " + ex.Message);
                 }
             }
         }
