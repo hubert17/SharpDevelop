@@ -52,95 +52,26 @@ namespace ZipFromMsi
                     }
                 }
 
-                // Compile and add the launcher to the zip
-                string tempExePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SharpDevelopLauncher.exe");
+                // Add the pre-compiled launcher to the zip
+                string precompiledLauncherPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../SharpDevelopLauncher.exe"));
                 try
                 {
-                    string baseDir = AppDomain.CurrentDomain.BaseDirectory;
-                    string iconPath = Path.GetFullPath(Path.Combine(baseDir, "..\\..\\..\\..\\Main\\SharpDevelop\\Resources\\SharpDevelop.ico"));
-
-                    CompileLauncher(tempExePath, iconPath);
-
-                    using (ZipArchive theZip = ZipFile.Open(zipFileName, ZipArchiveMode.Update))
+                    if (File.Exists(precompiledLauncherPath))
                     {
-                        theZip.CreateEntryFromFile(tempExePath, ZipRootDirectory + "/SharpDevelop.exe", CompressionLevel.Optimal);
+                        using (ZipArchive theZip = ZipFile.Open(zipFileName, ZipArchiveMode.Update))
+                        {
+                            theZip.CreateEntryFromFile(precompiledLauncherPath, ZipRootDirectory + "/SharpDevelop.exe", CompressionLevel.Optimal);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Warning: Pre-compiled launcher not found at: " + precompiledLauncherPath);
                     }
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Warning: Failed to compile or add launcher to zip: " + ex.Message);
+                    Console.WriteLine("Warning: Failed to add pre-compiled launcher to zip: " + ex.Message);
                 }
-                finally
-                {
-                    if (File.Exists(tempExePath))
-                    {
-                        File.Delete(tempExePath);
-                    }
-                }
-            }
-        }
-
-        static void CompileLauncher(string outputPath, string iconPath)
-        {
-            var codeProvider = new Microsoft.CSharp.CSharpCodeProvider();
-            var parameters = new System.CodeDom.Compiler.CompilerParameters();
-            
-            parameters.GenerateExecutable = true;
-            parameters.OutputAssembly = outputPath;
-            parameters.CompilerOptions = "/target:winexe";
-            if (!string.IsNullOrEmpty(iconPath) && File.Exists(iconPath))
-            {
-                parameters.CompilerOptions += " /win32icon:\"" + iconPath + "\"";
-            }
-            
-            parameters.ReferencedAssemblies.Add("System.dll");
-            parameters.ReferencedAssemblies.Add("System.Windows.Forms.dll");
-            
-            string sourceCode = @"
-using System;
-using System.Diagnostics;
-using System.IO;
-using System.Windows.Forms;
-
-class Program
-{
-    static void Main()
-    {
-        string baseDir = AppDomain.CurrentDomain.BaseDirectory;
-        string binPath = Path.Combine(baseDir, ""bin"");
-        string exePath = Path.Combine(binPath, ""SharpDevelop.exe"");
-        
-        if (!File.Exists(exePath))
-        {
-            MessageBox.Show(""Could not find bin\\SharpDevelop.exe in the current directory."", ""SharpDevelop Portable"", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return;
-        }
-        
-        ProcessStartInfo startInfo = new ProcessStartInfo();
-        startInfo.FileName = exePath;
-        startInfo.WorkingDirectory = binPath;
-        
-        try
-        {
-            Process.Start(startInfo);
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show(""Failed to start SharpDevelop: "" + ex.Message, ""SharpDevelop Portable"", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-    }
-}
-";
-            
-            var results = codeProvider.CompileAssemblyFromSource(parameters, sourceCode);
-            if (results.Errors.Count > 0)
-            {
-                var sb = new System.Text.StringBuilder();
-                foreach (System.CodeDom.Compiler.CompilerError error in results.Errors)
-                {
-                    sb.AppendLine(error.ErrorText);
-                }
-                throw new Exception("Compiler errors:\n" + sb.ToString());
             }
         }
 
