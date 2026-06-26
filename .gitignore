@@ -35,3 +35,7 @@ bin/
 .agents/
 .antigravityignore
 .geminiignore
+
+# Dist/Build outputs
+/dist/
+/SharpDevelopPortable.zip

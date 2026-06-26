@@ -38,16 +38,19 @@ pushd src\Tools\ZipFromMsi\bin\Debug
 ZipFromMsi.exe
 popd
 
-:: Move the zip file to the repository root
+:: Move the zip file to the dist directory
 if exist src\Tools\ZipFromMsi\bin\Debug\SharpDevelopStandalone.zip (
-  if exist SharpDevelopPortable.zip (
-    del SharpDevelopPortable.zip
+  if not exist dist (
+    mkdir dist
   )
-  move src\Tools\ZipFromMsi\bin\Debug\SharpDevelopStandalone.zip SharpDevelopPortable.zip
+  if exist dist\SharpDevelopPortable.zip (
+    del dist\SharpDevelopPortable.zip
+  )
+  move src\Tools\ZipFromMsi\bin\Debug\SharpDevelopStandalone.zip dist\SharpDevelopPortable.zip
   echo.
   echo ===================================================
   echo   Portable build created successfully!
-  echo   Output: SharpDevelopPortable.zip
+  echo   Output: dist\SharpDevelopPortable.zip
   echo ===================================================
 ) else (
   echo Error: Portable zip could not be generated.

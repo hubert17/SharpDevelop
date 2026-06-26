@@ -89,6 +89,8 @@ jobs:
           if (Test-Path $msiPath) {
               $size = (Get-Item $msiPath).Length / 1MB
               Write-Host "Successfully generated SharpDevelop.msi ($($size.ToString('F2')) MB)"
+              if (!(Test-Path "dist")) { New-Item -ItemType Directory -Path "dist" | Out-Null }
+              Copy-Item $msiPath "dist/SharpDevelop.msi"
           } else {
               Write-Error "SharpDevelop.msi was not found!"
               exit 1
@@ -105,7 +107,8 @@ jobs:
           if (Test-Path $zipPath) {
               $size = (Get-Item $zipPath).Length / 1MB
               Write-Host "Successfully generated SharpDevelopStandalone.zip ($($size.ToString('F2')) MB)"
-              Copy-Item $zipPath "SharpDevelopPortable.zip"
+              if (!(Test-Path "dist")) { New-Item -ItemType Directory -Path "dist" | Out-Null }
+              Copy-Item $zipPath "dist/SharpDevelopPortable.zip"
           } else {
               Write-Error "SharpDevelopStandalone.zip was not found!"
               exit 1
@@ -115,21 +118,21 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: SharpDevelop-Installer
-          path: src/Setup/bin/SharpDevelop.msi
+          path: dist/SharpDevelop.msi
 
       - name: Upload Portable Artifact
         uses: actions/upload-artifact@v4
         with:
           name: SharpDevelop-Portable
-          path: SharpDevelopPortable.zip
+          path: dist/SharpDevelopPortable.zip
 
       - name: Create Release
         if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            src/Setup/bin/SharpDevelop.msi
-            SharpDevelopPortable.zip
+            dist/SharpDevelop.msi
+            dist/SharpDevelopPortable.zip
           draft: false
           prerelease: false
           name: Release ${{ github.ref_name }}
