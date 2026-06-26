@@ -158,9 +158,14 @@ class Program
                     string source = (string)file.Attribute("Source");
                     string name = (string)file.Attribute("Name");
 
-                    theZip.CreateEntryFromFile(RelativePathToolToSetupFolder + source, 
-                        AppendRelativePath(currentRelativePath, name),
-                        CompressionLevel.Optimal);
+                    string sourcePath = RelativePathToolToSetupFolder + source;
+                    if (File.Exists(sourcePath)) {
+                        theZip.CreateEntryFromFile(sourcePath, 
+                            AppendRelativePath(currentRelativePath, name),
+                            CompressionLevel.Optimal);
+                    } else {
+                        Console.WriteLine("Warning: File not found, skipping: " + sourcePath);
+                    }
                 }
             }
 

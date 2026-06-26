@@ -39,3 +39,9 @@ bin/
 # Dist/Build outputs
 /dist/
 /SharpDevelopPortable.zip
+
+# WPF temporary build files
+*_wpftmp.csproj
+
+# WiX Backup files
+*.wxs.bak

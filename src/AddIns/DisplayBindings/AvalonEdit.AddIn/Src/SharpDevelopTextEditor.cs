@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014 AlphaSierraPapa for the SharpDevelop Team
+// Copyright (c) 2014 AlphaSierraPapa for the SharpDevelop Team
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this
 // software and associated documentation files (the "Software"), to deal in the Software
@@ -70,6 +70,10 @@ namespace ICSharpCode.AvalonEdit.AddIn
 			
 			options = ICSharpCode.AvalonEdit.AddIn.Options.CodeEditorOptions.Instance;
 			options.BindToTextEditor(this);
+			
+			// Enforce High-DPI ClearType text rendering modes
+			System.Windows.Media.TextOptions.SetTextFormattingMode(this, System.Windows.Media.TextFormattingMode.Display);
+			System.Windows.Media.TextOptions.SetTextRenderingMode(this, System.Windows.Media.TextRenderingMode.ClearType);
 		}
 		
 		protected virtual ICSharpCode.Core.FileName FileName {

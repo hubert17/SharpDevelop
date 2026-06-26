@@ -202,13 +202,15 @@
 		<Exec WorkingDirectory="$(ProjectDir)"
 		      Command="$(MSBuildExecutable) SharpDevelop.sln /t:Clean $(BuildProperties)"/>
 		<Exec WorkingDirectory="$(ProjectDir)"
-		      Command="$(MSBuildExecutable) SharpDevelop.Tests.sln /t:Clean $(BuildProperties)"/>
+		      Command="$(MSBuildExecutable) SharpDevelop.Tests.sln /t:Clean $(BuildProperties) &gt; NUL 2&gt;&amp;1"
+		      IgnoreExitCode="True"/>
 	</Target>
 	<Target Name="clean2">
 		<Exec WorkingDirectory="$(ProjectDir)"
 		      Command="$(MSBuildExecutable) SharpDevelop.sln /t:Clean $(BuildProperties)"/>
 		<Exec WorkingDirectory="$(ProjectDir)"
-		      Command="$(MSBuildExecutable) SharpDevelop.Tests.sln /t:Clean $(BuildProperties)"/>
+		      Command="$(MSBuildExecutable) SharpDevelop.Tests.sln /t:Clean $(BuildProperties) &gt; NUL 2&gt;&amp;1"
+		      IgnoreExitCode="True"/>
 	</Target>
 	
 	<Target Name="createsetup">

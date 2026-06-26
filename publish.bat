@@ -26,6 +26,10 @@ if not exist dist (
   mkdir dist
 )
 
+:: Clean WiX projects to remove references to missing/deleted files
+echo Cleaning WiX configurations...
+powershell -NoProfile -ExecutionPolicy Bypass -File "%CD%\src\Setup\CleanWixProjects.ps1"
+
 :: Run MSBuild with Automated.proj targets to build and package both MSI installer and Portable Zip
 echo Starting build and package process...
 "%msbuild%" src\Automated.proj /p:MSBuildExecutable="\"%msbuild%\"" /p:ArtefactsOutputDir="%CD%\dist" /p:BranchName=master /t:clean1;init;build;copyprecompiled;createsetup;createxcopydeployablezip

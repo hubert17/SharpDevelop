@@ -646,59 +646,6 @@
                     </Component>
                   </Directory>
                   <Directory Id="VBFileTemplatesFolder" Name="VB">
-                    <Component Id="VBFileTemplates" Guid="F51E9F9D-F711-4124-90E6-C8CECD4E890C" DiskId="1">
-                      <File Id="VB.Empty.xft" Name="VB.Empty.xft" Source="..\..\data\templates\file\VB\VB.Empty.xft" />
-                      <File Id="VB.EmptyClass.xft" Name="VB.EmptyClass.xft" Source="..\..\data\templates\file\VB\VB.EmptyClass.xft" />
-                      <File Id="VB.Exception.xft" Name="VB.Exception.xft" Source="..\..\data\templates\file\VB\VB.Exception.xft" />
-                      <File Id="VB.Forms.Form.xft" Name="VB.Forms.Form.xft" Source="..\..\data\templates\file\VB\VB.Forms.Form.xft" />
-                      <File Id="VB.Forms.UserControl.xft" Name="VB.Forms.UserControl.xft" Source="..\..\data\templates\file\VB\VB.Forms.UserControl.xft" />
-                      <File Id="VB.Interface.xft" Name="VB.Interface.xft" Source="..\..\data\templates\file\VB\VB.Interface.xft" />
-                      <File Id="VB.Module.xft" Name="VB.Module.xft" Source="..\..\data\templates\file\VB\VB.Module.xft" />
-                      <File Id="VB.MyExtensionClass.xft" Name="VB.MyExtensionClass.xft" Source="..\..\data\templates\file\VB\VB.MyExtensionClass.xft" />
-                      <File Id="VB.Patterns.Singleton.xft" Name="VB.Patterns.Singleton.xft" Source="..\..\data\templates\file\VB\VB.Patterns.Singleton.xft" />
-                      <File Id="VB.Structure.xft" Name="VB.Structure.xft" Source="..\..\data\templates\file\VB\VB.Structure.xft" />
-                      <File Id="VB.UnitTest.xft" Name="VB.UnitTest.xft" Source="..\..\data\templates\file\VB\VB.UnitTest.xft" />
-                      <File Id="VB.Web.WebControl.xft" Name="VB.Web.WebControl.xft" Source="..\..\data\templates\file\VB\VB.Web.WebControl.xft" />
-                      <File Id="VB.Web.WebForm.xft" Name="VB.Web.WebForm.xft" Source="..\..\data\templates\file\VB\VB.Web.WebForm.xft" />
-                      <File Id="VB.Web.WebHandler.xft" Name="VB.Web.WebHandler.xft" Source="..\..\data\templates\file\VB\VB.Web.WebHandler.xft" />
-                      <File Id="VB.Web.WebService.xft" Name="VB.Web.WebService.xft" Source="..\..\data\templates\file\VB\VB.Web.WebService.xft" />
-                      <File Id="VB.WPFFlowDocument.xft" Name="VB.WPFFlowDocument.xft" Source="..\..\data\templates\file\VB\VB.WPFFlowDocument.xft" />
-                      <File Id="VB.WPFPage.xft" Name="VB.WPFPage.xft" Source="..\..\data\templates\file\VB\VB.WPFPage.xft" />
-                      <File Id="VB.WPFPageFunction.xft" Name="VB.WPFPageFunction.xft" Source="..\..\data\templates\file\VB\VB.WPFPageFunction.xft" />
-                      <File Id="VB.WPFResourceDictionary.xft" Name="VB.WPFResourceDictionary.xft" Source="..\..\data\templates\file\VB\VB.WPFResourceDictionary.xft" />
-                      <File Id="VB.WPFUserControl.xft" Name="VB.WPFUserControl.xft" Source="..\..\data\templates\file\VB\VB.WPFUserControl.xft" />
-                      <File Id="VB.WPFWindow.xft" Name="VB.WPFWindow.xft" Source="..\..\data\templates\file\VB\VB.WPFWindow.xft" />
-                    </Component>
-                    <Component Id="VBMvcControllerFileTemplate" Guid="E56644A3-2A6C-4E49-88E2-85EEDA3B0999" DiskId="1">
-                      <File Id="VB.Mvc.Controller.xft" Name="VB.Mvc.Controller.xft" Source="..\..\data\templates\file\VB\VB.Mvc.Controller.xft" KeyPath="yes" />
-                    </Component>
-                    <Component Id="VBMvcViewContentPageFileTemplate" Guid="D1A45934-F42E-4B69-82CA-FF0769A39268" DiskId="1">
-                      <File Id="VB.Mvc.ViewContentPage.xft" Name="VB.Mvc.ViewContentPage.xft" Source="..\..\data\templates\file\VB\VB.Mvc.ViewContentPage.xft" KeyPath="yes" />
-                    </Component>
-                    <Component Id="VBMvcViewMasterPageFileTemplate" Guid="014285CD-C24F-4C40-9C31-089C83E09660" DiskId="1">
-                      <File Id="VB.Mvc.ViewMasterPage.xft" Name="VB.Mvc.ViewMasterPage.xft" Source="..\..\data\templates\file\VB\VB.Mvc.ViewMasterPage.xft" KeyPath="yes" />
-                    </Component>
-                    <Component Id="VBMvcViewPageFileTemplate" Guid="4C6C4367-AC3E-49F3-AA89-2EC2AF5D27C5" DiskId="1">
-                      <File Id="VB.Mvc.ViewPage.xft" Name="VB.Mvc.ViewPage.xft" Source="..\..\data\templates\file\VB\VB.Mvc.ViewPage.xft" KeyPath="yes" />
-                    </Component>
-                    <Component Id="VBMvcViewUserControlFileTemplate" Guid="A6272501-2DB7-48B5-AF86-7D53016DF29A" DiskId="1">
-                      <File Id="VB.Mvc.ViewUserControl.xft" Name="VB.Mvc.ViewUserControl.xft" Source="..\..\data\templates\file\VB\VB.Mvc.ViewUserControl.xft" KeyPath="yes" />
-                    </Component>
-                    <Component Id="VBWcfServiceFileTemplate" Guid="A1EABE3E-BE0D-11E0-A4E6-5BD14824019B" DiskId="1">
-                      <File Id="VB.WcfService.xft" Name="VB.WcfService.xft" Source="..\..\data\templates\file\VB\VB.WcfService.xft" KeyPath="yes" />
-                    </Component>
-                    <Component Id="VBWcfRestServiceFileTemplate" Guid="28AB44B8-DD9C-11E0-AEE3-30B84724019B" DiskId="1">
-                      <File Id="VB.WcfRestService.xft" Name="VB.WcfRestService.xft" Source="..\..\data\templates\file\VB\VB.WcfRestService.xft" KeyPath="yes" />
-                    </Component>
-                    <Component Id="VBMvcRazorLayoutPageFileTemplate" Guid="2A31914B-FB21-423D-BD2F-7CC3B8D76998" DiskId="1">
-                      <File Id="VB.Mvc.Razor.LayoutPage.xft" Name="VB.Mvc.Razor.LayoutPage.xft" Source="..\..\data\templates\file\VB\VB.Mvc.Razor.LayoutPage.xft" KeyPath="yes" />
-                    </Component>
-                    <Component Id="VBMvcRazorPartialPageFileTemplate" Guid="B16D8404-5BFC-4875-BBB0-5952693067E2" DiskId="1">
-                      <File Id="VB.Mvc.Razor.PartialPage.xft" Name="VB.Mvc.Razor.PartialPage.xft" Source="..\..\data\templates\file\VB\VB.Mvc.Razor.PartialPage.xft" KeyPath="yes" />
-                    </Component>
-                    <Component Id="VBMvcRazorViewPageFileTemplate" Guid="64BFEE23-D6CD-4832-899C-C3F8639526AF" DiskId="1">
-                      <File Id="VB.Mvc.Razor.ViewPage.xft" Name="VB.Mvc.Razor.ViewPage.xft" Source="..\..\data\templates\file\VB\VB.Mvc.Razor.ViewPage.xft" KeyPath="yes" />
-                    </Component>
                   </Directory>
                   <Directory Id="WebFileTemplatesFolder" Name="Web">
                     <Component Id="EmptyHTMLFileTemplate" Guid="4D820EE2-E443-4824-BEF9-2C031C59875C" DiskId="1">
